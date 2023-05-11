@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="flex-c-m h-full p-l-18 p-r-25 bor5">
-                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="{{$cart->total_quantity}}">
                             <i class="zmdi zmdi-shopping-cart"></i>
                         </div>
                     </div>
@@ -230,23 +230,30 @@
 
         <div class="header-cart-content flex-w js-pscroll">
             <ul class="header-cart-wrapitem w-full">
+                @foreach ($cart->items as $item)
+                    
                 <li class="header-cart-item flex-w flex-t m-b-12">
-                    <div class="header-cart-item-img">
-                        <img src="{{asset('/images')}}/item-cart-01.jpg" alt="IMG">
-                    </div>
+                    <a href="{{route('removeCart',['id'=>$item['id']])}}">
+                        <div class="header-cart-item-img">
+                            <img src="{{asset('/images')}}/{{$item['AnhDaiDien']}}" alt="{{$item['TenSanPham']}}">
+                        </div>
+                    </a>
+
 
                     <div class="header-cart-item-txt p-t-8">
-                        <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                            White Shirt Pleat
+                        <a href="#" class="header-cart-item-name m-b-18  trans-04">
+                            {{$item['TenSanPham']}}
                         </a>
 
                         <span class="header-cart-item-info">
-                            1 x $19.00
+                            {{$item['quantity'].' x '.number_format(floatval($item['GiaBan']), 0, ',', '.').' VNĐ'}}
                         </span>
+                        
                     </div>
                 </li>
 
-                <li class="header-cart-item flex-w flex-t m-b-12">
+                @endforeach
+                {{-- <li class="header-cart-item flex-w flex-t m-b-12">
                     <div class="header-cart-item-img">
                         <img src="{{asset('/images')}}/item-cart-02.jpg" alt="IMG">
                     </div>
@@ -276,12 +283,12 @@
                             1 x $17.00
                         </span>
                     </div>
-                </li>
+                </li> --}}
             </ul>
 
             <div class="w-full">
                 <div class="header-cart-total w-full p-tb-40">
-                    Total: $75.00
+                    Total: {{number_format($cart->total_price).' VNĐ'}}
                 </div>
 
                 <div class="header-cart-buttons flex-w w-full">

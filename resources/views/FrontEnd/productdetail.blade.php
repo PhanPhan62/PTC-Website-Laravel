@@ -32,11 +32,11 @@
 
                             <div class="slick3 gallery-lb">
                                 @foreach ($chitietanh as $item)
-                                    <div class="item-slick3 slick-active" data-thumb="{{ asset('/uploads/ChiTiet') }}/{{ $item->Anh }}">
+                                    <div class="item-slick3 " data-thumb="{{ asset('/uploads/ChiTiet') }}/{{ $item->Anh }}">
                                         <div class="wrap-pic-w pos-relative">
-                                            <img src="{{ asset('/uploads') }}/{{ $item->AnhDaiDien }}" alt="IMG-PRODUCT">
+                                            <img src="{{ asset('/uploads') }}/{{ $item->AnhDaiDien }}" alt="{{ $item->TenSanPham }}">
                                             <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                                href="{{ asset('/uploads') }}/{{ $item->Anh }}">
+                                                href="{{ asset('/uploads') }}/{{ $item->AnhDaiDien }}">
                                                 <i class="fa fa-expand"></i>
                                             </a>
                                         </div>
@@ -54,7 +54,7 @@
                         </h4>
 
                         <span class="mtext-106 cl2">
-                            {{ number_format($product->GiaBan) }} VNĐ
+                            {{ number_format($product->GiaBan).' VNĐ' }} 
                         </span>
 
                         <p class="stext-102 cl3 p-t-23">

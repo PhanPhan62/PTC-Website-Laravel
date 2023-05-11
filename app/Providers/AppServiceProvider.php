@@ -8,6 +8,7 @@ use App\Models\LoaiSP;
 use App\Models\User;
 use App\Models\ProductModels;
 use Illuminate\Support\Facades\DB;
+use App\Helper\CartHelper;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,7 +30,8 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'category' => LoaiSP::where('TrangThai', '1')->orderBy('TenLoaiSP', 'ASC')->get(),
                 'cate' => LoaiSP::all(),
-                'powers' => User::select('power')->whereNotNull('power')->distinct()->get()
+                'powers' => User::select('power')->whereNotNull('power')->distinct()->get(),
+                'cart' => new CartHelper(),
             ]);
         });
     }

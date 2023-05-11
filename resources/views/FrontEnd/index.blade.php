@@ -204,11 +204,11 @@
                                 <!-- Block2 -->
                                 <div class="block2">
                                     <div class="block2-pic hov-img0">
-                                        {{-- <img src="{{asset('/images')}}/{{$sp->AnhDaiDien}}" alt="IMG-PRODUCT"> --}}
+
                                         <img src="{{ asset('uploads/'.$sp->AnhDaiDien) }}" alt="IMG-PRODUCT">
 
-                                        <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                            Quick View
+                                        <a href="{{route('addCart',['id'=>$sp->id])}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
+                                            Add to Cart
                                         </a>
                                     </div>
 
@@ -250,8 +250,8 @@
                                     <div class="block2-pic hov-img0">
                                         <img src="{{ asset('uploads/'.$item->AnhDaiDien) }}" alt="IMG-PRODUCT">
 
-                                        <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                            Quick View
+                                        <a href="{{route('addCart',['id'=>$sp->id])}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
+                                            Add to Cart
                                         </a>
                                     </div>
 
@@ -294,8 +294,8 @@
                                     <div class="block2-pic hov-img0">
                                         <img src="{{ asset('uploads/'.$item1->AnhDaiDien) }}" alt="IMG-PRODUCT">
 
-                                        <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                            Quick View
+                                        <a href="{{route('addCart',['id'=>$sp->id])}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
+                                            Add to Cart
                                         </a>
                                     </div>
 
@@ -419,7 +419,7 @@
 
                         <h4 class="p-b-12">
                             <a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-                                The Great Big List of Men’s Gifts for the Holidays
+                                The Great Big List of Men's Gifts for the Holidays
                             </a>
                         </h4>
 

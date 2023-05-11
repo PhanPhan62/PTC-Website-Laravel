@@ -71,7 +71,7 @@ class HomeController extends Controller
         $mau = MauModels::all();
         $chitietanh = DB::table('chitietanh')
             ->join('sanpham', 'chitietanh.MaSanPham', '=', 'sanpham.id')
-            ->select('chitietanh.*', 'sanpham.AnhDaiDien')
+            ->select('chitietanh.*', 'sanpham.AnhDaiDien', 'sanpham.TenSanPham')
             ->where('chitietanh.MaSanPham', $id)
             ->get();
 
