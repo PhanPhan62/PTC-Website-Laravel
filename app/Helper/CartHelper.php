@@ -7,11 +7,13 @@ class CartHelper
     public $items = [];
     public $total_quantity = 0;
     public $total_price = 0;
+    // public $total_price1 = 0;
 
     public function __construct()
     {
         $this->items = session('cart') ? session('cart') : [];
         $this->total_price = $this->get_total_price();
+        // $this->total_price1 = $this->get_price_of_product($id);
         $this->total_quantity = $this->get_total_quantity();
     }
 
@@ -27,7 +29,6 @@ class CartHelper
         if (isset($this->items[$product->id])) {
             $this->items[$product->id]['quantity'] += $quantity;
         } else {
-
             $this->items[$product->id] = $item;
         }
         session(['cart' => $this->items]);
@@ -41,11 +42,20 @@ class CartHelper
     }
     public function update($id, $quantity = 1)
     {
-        if (isset($this->items[$id])) {
-            $this->items[$id]['quantity'] = $quantity;
+        $new_quantity = $quantity;
+        foreach ($this->items as $id => $item) {
+            $this->items[$id]['quantity'] = $new_quantity;
         }
         session(['cart' => $this->items]);
     }
+    // public function update($id, $quantity = 1)
+    // {
+    //     if (isset($this->items[$id])) {
+    //         $this->items[$id]['quantity'] = $quantity;
+    //     }
+    //     session(['cart' => $this->items]);
+    // }
+
     public function clear()
     {
         session(['cart' => []]);
@@ -58,6 +68,17 @@ class CartHelper
         }
         return $t;
     }
+    // private function get_price_of_product($id)
+    // {
+    //     $t = 0;
+    //     foreach ($this->items as $item) {
+    //         if ($item['id'] == $id) {
+    //             $t += $item['GiaBan'] * $item['quantity'];
+    //         }
+    //         return $t;
+    //     }
+    //     return 0; // Trả về 0 nếu không tìm thấy sản phẩm
+    // }
     private function get_total_quantity()
     {
         $t = 0;

@@ -23,8 +23,9 @@ class CartController extends Controller
         $cart->remove($id);
         return redirect()->back();
     }
-    public function update(CartHelper $cart, $id, $quantity)
+    public function update(CartHelper $cart, $id, Request $request)
     {
+        $quantity = $request->quantity ? $request->quantity : 1;
         $cart->update($id, $quantity);
         return redirect()->back();
     }
