@@ -15,24 +15,22 @@ class CartController extends Controller
     {
         $product = ProductModels::find($id);
         $cart->add($product);
-
         return redirect()->back();
     }
+
     public function remove(CartHelper $cart, $id)
     {
         $cart->remove($id);
-
         return redirect()->back();
     }
     public function update(CartHelper $cart, $id, $quantity)
     {
         $cart->update($id, $quantity);
-
         return redirect()->back();
     }
     public function clear(CartHelper $cart, $id, $quantity)
     {
-        $cart->clear();
+        $cart->clear($id, $quantity);
         return redirect()->back();
     }
 }

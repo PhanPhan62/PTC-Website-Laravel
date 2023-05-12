@@ -32,9 +32,9 @@ class CartHelper
         }
         session(['cart' => $this->items]);
     }
-    public function remove($id, $quantity)
+    public function remove($id)
     {
-        if (isset($this->items[$id]) and $quantity == 0) {
+        if (isset($this->items[$id])) {
             unset($this->items[$id]);
         }
         session(['cart' => $this->items]);
@@ -52,17 +52,12 @@ class CartHelper
     }
     private function get_total_price()
     {
-        $tPrice = 0;
-        $price = 0;
+        $t = 0;
         foreach ($this->items as $item) {
-            $tPrice += $item['GiaBan'] * $item['quantity'];
-            $price = $item['GiaBan'] * $item['quantity'];
-            return $price;
+            $t += $item['GiaBan'] * $item['quantity'];
         }
-
-        return $tPrice;
+        return $t;
     }
-
     private function get_total_quantity()
     {
         $t = 0;
