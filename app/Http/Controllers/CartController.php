@@ -11,6 +11,7 @@ class CartController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function add(CartHelper $cart, $id)
     {
         $product = ProductModels::find($id);
@@ -25,8 +26,11 @@ class CartController extends Controller
     }
     public function update(CartHelper $cart, $id, Request $request)
     {
-        $quantity = $request->quantity ? $request->quantity : 1;
+        // foreach ($cart as $item) {
+        $quantity = request()->quantity ? request()->quantity : 1;
         $cart->update($id, $quantity);
+        // dd($cart);
+        // }
         return redirect()->back();
     }
     public function clear(CartHelper $cart, $id, $quantity)

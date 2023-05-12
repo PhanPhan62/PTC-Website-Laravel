@@ -40,21 +40,14 @@ class CartHelper
         }
         session(['cart' => $this->items]);
     }
+
     public function update($id, $quantity = 1)
     {
-        $new_quantity = $quantity;
-        foreach ($this->items as $id => $item) {
-            $this->items[$id]['quantity'] = $new_quantity;
+        if (isset($this->items[$id])) {
+            $this->items[$id]['quantity'] = $quantity;
         }
         session(['cart' => $this->items]);
     }
-    // public function update($id, $quantity = 1)
-    // {
-    //     if (isset($this->items[$id])) {
-    //         $this->items[$id]['quantity'] = $quantity;
-    //     }
-    //     session(['cart' => $this->items]);
-    // }
 
     public function clear()
     {
