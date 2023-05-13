@@ -51,7 +51,7 @@ class CartHelper
 
     public function clear()
     {
-        session(['cart' => []]);
+        session(['cart' => '']);
     }
     private function get_total_price()
     {
@@ -61,17 +61,6 @@ class CartHelper
         }
         return $t;
     }
-    // private function get_price_of_product($id)
-    // {
-    //     $t = 0;
-    //     foreach ($this->items as $item) {
-    //         if ($item['id'] == $id) {
-    //             $t += $item['GiaBan'] * $item['quantity'];
-    //         }
-    //         return $t;
-    //     }
-    //     return 0; // Trả về 0 nếu không tìm thấy sản phẩm
-    // }
     private function get_total_quantity()
     {
         $t = 0;
@@ -81,5 +70,14 @@ class CartHelper
             }
         }
         return $t;
+    }
+    public function get_price_of_item($id)
+    {
+        if (isset($this->items[$id])) {
+            $item = $this->items[$id];
+            $price = $item['GiaBan'] * $item['quantity'];
+            return $price;
+        }
+        return 0;
     }
 }

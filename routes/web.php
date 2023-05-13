@@ -93,7 +93,7 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
             Route::get('/addCart{id}', 'add')->name('addCart');
             Route::get('/removeCart/{id}', 'remove')->name('removeCart');
             Route::get('/updateCart/{id}', 'update')->name('updateCart');
-            Route::get('/clearCart/{id}', 'clear')->name('clearCart');
+            Route::get('/clearCart', 'clear')->name('clearCart');
         });
     });
 });

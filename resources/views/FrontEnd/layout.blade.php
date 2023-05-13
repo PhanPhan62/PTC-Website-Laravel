@@ -35,6 +35,12 @@
     <link rel="stylesheet" type="text/css" href="/css/util.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <!--===============================================================================================-->
+    <style>
+        .flex-c-m.stext-101.cl2.size-119.bg8.bor13.hov-btn3.p-lr-15.trans-04.pointer.m-tb-10:hover {
+            background-color: #fff;
+            color: #000;
+        }
+    </style>
 </head>
 
 <body class="animsition">
@@ -49,8 +55,8 @@
     <!-- Back to top -->
     <div class="btn-back-to-top" id="myBtn">
         <span class="symbol-btn-back-to-top">
-			<i class="zmdi zmdi-chevron-up"></i>
-		</span>
+            <i class="zmdi zmdi-chevron-up"></i>
+        </span>
     </div>
 
     <!-- Modal1 -->

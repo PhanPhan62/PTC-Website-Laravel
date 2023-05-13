@@ -26,16 +26,13 @@ class CartController extends Controller
     }
     public function update(CartHelper $cart, $id, Request $request)
     {
-        // foreach ($cart as $item) {
         $quantity = request()->quantity ? request()->quantity : 1;
         $cart->update($id, $quantity);
-        // dd($cart);
-        // }
         return redirect()->back();
     }
-    public function clear(CartHelper $cart, $id, $quantity)
+    public function clear(CartHelper $cart)
     {
-        $cart->clear($id, $quantity);
+        $cart->clear();
         return redirect()->back();
     }
 }
