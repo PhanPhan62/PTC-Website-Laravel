@@ -250,7 +250,7 @@
                                     <div class="block2-pic hov-img0">
                                         <img src="{{ asset('uploads/'.$item->AnhDaiDien) }}" alt="IMG-PRODUCT">
 
-                                        <a href="{{route('addCart',['id'=>$sp->id])}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
+                                        <a href="{{route('addCart',['id'=>$item->id])}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
                                             Add to Cart
                                         </a>
                                     </div>
@@ -294,7 +294,7 @@
                                     <div class="block2-pic hov-img0">
                                         <img src="{{ asset('uploads/'.$item1->AnhDaiDien) }}" alt="IMG-PRODUCT">
 
-                                        <a href="{{route('addCart',['id'=>$sp->id])}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
+                                        <a href="{{route('addCart',['id'=>$item1->id])}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
                                             Add to Cart
                                         </a>
                                     </div>

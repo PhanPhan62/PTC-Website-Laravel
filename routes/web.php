@@ -80,6 +80,7 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
     Route::get('/productdetail/{id?}', 'productdetail')->name('productdetail');
     Route::get('/shop/{id?}', 'shop')->name('shop');
     Route::get('/shopcart', 'shopcart')->name('shopcart');
+    Route::post('/shopcart', 'createOrder')->name('shopcart');
     Route::get('/blog', 'blog')->name('blog');
     Route::get('/signin', 'signin')->name('signin')->middleware();
     Route::post('/postSignin', 'postsignin')->name('postSignin');
@@ -89,11 +90,13 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
     Route::get('/layout', 'layout')->name('layout');
     Route::group(['prefix' => 'cart'], function () {
         Route::controller(App\Http\Controllers\CartController::class)->group(function () {
-            Route::get('/view', 'view')->name('viewCart');
+            // Route::get('/view', 'view')->name('viewCart');
             Route::get('/addCart{id}', 'add')->name('addCart');
             Route::get('/removeCart/{id}', 'remove')->name('removeCart');
             Route::get('/updateCart/{id}', 'update')->name('updateCart');
             Route::get('/clearCart', 'clear')->name('clearCart');
+            Route::get('/checkout', 'checkout')->name('checkout');
+            Route::post('/checkout', 'checkout')->name('postcheckout');
         });
     });
 });

@@ -1076,6 +1076,12 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     line-height: 1.3;
 }
 
+.aaa:hover {
+    border-color: #717fe0;
+    background-color: #717fe0;
+    color: #fff;
+}
+
 .header-cart-item-info {
     display: block;
     font-family: Poppins-Regular;

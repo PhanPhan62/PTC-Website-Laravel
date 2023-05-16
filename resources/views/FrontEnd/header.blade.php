@@ -235,7 +235,7 @@
                 <li class="header-cart-item flex-w flex-t m-b-12">
                     <a href="{{route('removeCart',['id'=>$item['id']])}}">
                         <div class="header-cart-item-img">
-                            <img src="{{asset('/images')}}/{{$item['AnhDaiDien']}}" alt="{{$item['TenSanPham']}}">
+                            <img src="{{ asset('uploads/'.$item['AnhDaiDien']) }}" alt="{{$item['TenSanPham']}}">
                         </div>
                     </a>
 
@@ -295,10 +295,10 @@
                     <a href="{{route('shopcart')}}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
                         View Cart
                     </a>
-
+{{-- 
                     <a href="{{route('shopcart')}}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
                         Check Out
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>

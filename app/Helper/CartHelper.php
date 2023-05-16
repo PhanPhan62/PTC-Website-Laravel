@@ -7,13 +7,13 @@ class CartHelper
     public $items = [];
     public $total_quantity = 0;
     public $total_price = 0;
-    // public $total_price1 = 0;
+    public $checkCart;
 
     public function __construct()
     {
         $this->items = session('cart') ? session('cart') : [];
         $this->total_price = $this->get_total_price();
-        // $this->total_price1 = $this->get_price_of_product($id);
+        $this->checkCart = $this->checkCart();
         $this->total_quantity = $this->get_total_quantity();
     }
 
@@ -44,14 +44,19 @@ class CartHelper
     public function update($id, $quantity = 1)
     {
         if (isset($this->items[$id])) {
-            $this->items[$id]['quantity'] = $quantity;
+            foreach ($this->items as $itemId => $item) {
+                if ($itemId == $id) {
+                    $this->items[$itemId]['quantity'] = $quantity;
+                }
+            }
+            session(['cart' => $this->items]);
         }
         session(['cart' => $this->items]);
     }
 
     public function clear()
     {
-        session(['cart' => '']);
+        session(['cart' => []]);
     }
     private function get_total_price()
     {
@@ -79,5 +84,10 @@ class CartHelper
             return $price;
         }
         return 0;
+    }
+    public function checkCart()
+    {
+        $cart = session('cart');
+        return is_array($cart) && count($cart) > 0;
     }
 }

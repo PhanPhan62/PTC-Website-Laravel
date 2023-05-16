@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helper\CartHelper;
 use App\Models\ProductModels;
+use App\Models\CTHoaDonModels;
+use App\Models\KhachHangModels;
+use App\Models\DonHangModels;
+use Carbon\Carbon;
 
 class CartController extends Controller
 {
@@ -32,6 +36,37 @@ class CartController extends Controller
     }
     public function clear(CartHelper $cart)
     {
+        $cart->clear();
+        return redirect()->back();
+    }
+    public function CheckCart(CartHelper $cart)
+    {
+        $cartHelper = new CartHelper();
+        if ($cartHelper->checkCart()) {
+            return redirect()->route('shopcart');
+        }
+    }
+    public function checkout(CartHelper $cart, Request $request)
+    {
+        $customer = KhachHangModels::create($request->all());
+
+        $order = new DonHangModels;
+        $order->MaKhachHang = $customer->id;
+        $order->NgayDat = Carbon::now();
+        $order->TrangThaiDonHang = 1;
+        $order->TongTien = $cart->total_price;
+
+        $order->save();
+
+        foreach ($cart->items as $item) {
+            $orderdetail = new CTHoaDonModels;
+            $orderdetail->MaDonHang = $order->id;
+            $orderdetail->MaSanPham = $item['id'];
+            $orderdetail->SoLuong = $item['quantity'];
+            $orderdetail->GiaMua = $item['GiaBan'];
+            $orderdetail->save();
+        }
+        dd($cart);
         $cart->clear();
         return redirect()->back();
     }
