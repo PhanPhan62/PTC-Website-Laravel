@@ -55,7 +55,7 @@ class CartController extends Controller
         $order->NgayDat = Carbon::now();
         $order->TrangThaiDonHang = 1;
         $order->TongTien = $cart->total_price;
-
+        // dd($order->TongTien);
         $order->save();
 
         foreach ($cart->items as $item) {
@@ -66,7 +66,7 @@ class CartController extends Controller
             $orderdetail->GiaMua = $item['GiaBan'];
             $orderdetail->save();
         }
-        dd($cart);
+        // dd($cart);
         $cart->clear();
         return redirect()->back();
     }

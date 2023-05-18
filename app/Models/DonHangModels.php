@@ -12,8 +12,8 @@ class DonHangModels extends Model
     protected $fillable = [
         'MaKhachHang',
         'NgayDat',
-        'TrangThaiDonHang',
-        'TongTien'
+        'TongTien',
+        'TrangThaiDonHang'
     ];
     public $timestamps = false;
 }
