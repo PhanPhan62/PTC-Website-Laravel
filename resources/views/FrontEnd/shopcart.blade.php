@@ -175,7 +175,6 @@
                 </form>
             </div>
         @else
-
             <div class="container">
                 <div class="row">
                     <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
