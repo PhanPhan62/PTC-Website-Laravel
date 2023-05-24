@@ -28,7 +28,7 @@
                     <div class="breadcrumb-wrapper" style="height: 100%">
                         <ol class="breadcrumb" style="padding: 3px; background-color: #fff; margin-bottom: 0">
                             <li class="breadcrumb-item">
-                                <a href="#0">Dashboard</a>
+                                <a href="">Dashboard</a>
                             </li>
                             <li class="breadcrumb-item"><a href="#0">Forms</a></li>
                             <li class="breadcrumb-item active" aria-current="page">
@@ -37,6 +37,7 @@
                         </ol>
                     </nav>
                     <a href="{{route('create.product')}}" class="main-btn active-btn-outline rounded-md btn-hover" style="padding: 10px 25px; margin-bottom: 5px;">Add</a>
+                    <a href="{{route('product')}}" class="main-btn active-btn-outline rounded-md btn-hover" style="padding: 10px 25px; margin-bottom: 5px;">Clear Search</a>
                     </div>
                 </div>
             <!-- end col -->

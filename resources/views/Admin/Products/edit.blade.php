@@ -43,10 +43,10 @@
 
                             <?php $fileInput = request()->file('AnhDaiDien'); ?>
                             @if(!$fileInput)
-                                <input type="file" name="AnhDaiDien"  
+                                <input required type="file" name="AnhDaiDien"  
                                         id="AnhDaiDien" value="{{ $sanpham->AnhDaiDien }}"/>
                             @else
-                                <input type="text" name="AnhDaiDien"  value="{{ $sanpham->AnhDaiDien }}" placeholder="{{ $sanpham->AnhDaiDien }}"
+                                <input required type="text" name="AnhDaiDien"  value="{{ $sanpham->AnhDaiDien }}" placeholder="{{ $sanpham->AnhDaiDien }}"
                                 id="AnhDaiDien" />
                             @endif
 

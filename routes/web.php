@@ -15,7 +15,7 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::group(['prefix' => 'admin', 'middleware' => 'checkpower'], function () {
+Route::group(['prefix' => '', 'middleware' => 'checkpower'], function () {
     Route::controller(App\Http\Controllers\Admin\Admin_CategoryController::class)->group(function () {
         Route::get('/category', 'index')->name('Category');
         Route::get('/category/create', 'create')->name('create.category');
@@ -27,6 +27,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkpower'], function () {
     });
     Route::controller(App\Http\Controllers\Admin\Admin_ProductController::class)->group(function () {
         Route::get('/product', 'index')->name('product');
+        Route::get('/clearsearch', 'clearSearch')->name('clearSearch');
         Route::get('/product/create', 'create')->name('create.product');
         Route::post('/productstore', 'store')->name('store.product');
         Route::get('/product/{id}/edit', 'edit')->name('edit.product');

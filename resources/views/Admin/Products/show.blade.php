@@ -6,9 +6,8 @@
         <div class="card-body">
             <div class="card-body">
                 <h5 class="card-title">Tên sản phẩm : {{ $sanpham->TenSanPham}}</h5>
-                {{-- <p class="card-text">Mã sản phẩm : {{ $sanpham->id }}</p> --}}
-                <p class="card-text"><span style="font-weight: bold">Mã Loại sản phẩm :</span> {{ $sanpham->TenLoaiSP }}</p>
-                <p class="card-text"><span style="font-weight: bold">Tên Loại sản phẩm :</span> <img src="" alt=""><img  style="height: 200px; margin-left: 20px" src="{{ asset(''.'uploads/'. $sanpham->AnhDaiDien) }}" alt="{{ $sanpham->AnhDaiDien}}"></p>
+                <p class="card-text"><span style="font-weight: bold">Tên Loại sản phẩm :</span> {{ $sanpham->TenLoaiSP }}</p>
+                <p class="card-text"><span style="font-weight: bold">Ảnh sản phẩm :</span> <img src="" alt=""><img  style="height: 200px; margin-left: 20px" src="{{ asset(''.'uploads/'. $sanpham->AnhDaiDien) }}" alt="{{ $sanpham->AnhDaiDien}}"></p>
                 <p class="card-text"><span style="font-weight: bold">Mô Tả sản phẩm :</span> {{ $sanpham->MoTaSanPham}}</p>
                 <p class="card-text"><span style="font-weight: bold">Giá bán sản phẩm :</span> {{number_format($sanpham->GiaBan)}} VNĐ</p>
                 <p class="card-text"><span style="font-weight: bold">Nhà sản xuất :</span> {{ $sanpham->TenNSX}}</p>

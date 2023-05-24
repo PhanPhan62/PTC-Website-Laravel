@@ -26,8 +26,14 @@ class Admin_ProductController extends Controller
     {
         $data['sanpham'] = ProductModels::paginate(5);
         $data['max_length'] = 100;
+        // dd(request()->search);
+        if ($search = request()->search) {
+            $data['sanpham'] = ProductModels::where('TenSanPham', 'LIKE', '%' . $search . '%')->paginate(5);
+            $data['max_length'] = 100;
+        }
         return view('Admin.Products.index', $data);
     }
+
 
     /**
      * Show the form for creating a new resource.
