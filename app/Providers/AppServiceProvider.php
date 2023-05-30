@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\ProductModels;
 use Illuminate\Support\Facades\DB;
 use App\Helper\CartHelper;
+use App\Models\MauModels;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
                 'cate' => LoaiSP::all(),
                 'powers' => User::select('power')->whereNotNull('power')->distinct()->get(),
                 'cart' => new CartHelper(),
+                'col' => MauModels::all()
             ]);
         });
     }

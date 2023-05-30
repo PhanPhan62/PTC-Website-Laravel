@@ -90,9 +90,9 @@
                         </li>
                     </ul>
                 </li> --}}
-                <span class="divider">
-                    {{-- <hr /> --}}
-                </span>
+                {{--  <span class="divider">
+                    <hr /> 
+                </span> --}}
                 <li class="nav-item nav-item-has-children">
                     <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_4"
                         aria-controls="ddmenu_4" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,20 +103,32 @@
                                     d="M3.66675 4.58325V16.4999H19.2501V4.58325H3.66675ZM5.50008 14.6666V6.41659H8.25008V14.6666H5.50008ZM10.0834 14.6666V11.4583H12.8334V14.6666H10.0834ZM17.4167 14.6666H14.6667V11.4583H17.4167V14.6666ZM10.0834 9.62492V6.41659H17.4167V9.62492H10.0834Z" />
                             </svg>
                         </span>
-                        <span class="text">UI Elements </span>
+                        <span class="text">Hóa Đơn </span>
                     </a>
                     <ul id="ddmenu_4" class="collapse dropdown-nav">
                         <li>
-                            <a href="alerts.html"> Alerts </a>
+                            <a href="alerts.html"> Hóa Đơn Bán </a>
                         </li>
                         <li>
-                            <a href="buttons.html"> Buttons </a>
+                            <a href="buttons.html"> Hóa Đơn Nhập </a>
                         </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-has-children">
+                    <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_5"
+                        aria-controls="ddmenu_5" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                xmlns="http://www.w3.org/2000/svg"width="22" height="19" viewBox="0 0 448 512">
+                                <path
+                                    d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z" />
+                            </svg>
+                        </span>
+                        <span class="text">Nhân Viên </span>
+                    </a>
+                    <ul id="ddmenu_5" class="collapse dropdown-nav">
                         <li>
-                            <a href="cards.html"> Cards </a>
-                        </li>
-                        <li>
-                            <a href="typography.html"> Typography </a>
+                            <a href="{{route('nhanvien')}}"> Nhân Viên </a>
                         </li>
                     </ul>
                 </li>

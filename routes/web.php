@@ -71,9 +71,21 @@ Route::group(['prefix' => '', 'middleware' => 'checkpower'], function () {
         Route::delete('/nhasanxuat/destroy/{id}', 'destroy')->name('destroy.nhasanxuat');
         Route::get('/nhasanxuat/show/{id}', 'show')->name('show.nhasanxuat');
     });
+    Route::controller(App\Http\Controllers\Admin\NhanVienController::class)->group(function () {
+        Route::get('/nhanvien', 'index')->name('nhanvien');
+        Route::get('/nhasanxuat/create', 'create')->name('create.nhasanxuat');
+        Route::post('/nhasanxuatstore', 'store')->name('store.nhasanxuat');
+        Route::get('/nhasanxuat/{id}/edit', 'edit')->name('edit.nhasanxuat');
+        Route::put('/nhasanxuat/{id}', 'update')->name('update.nhasanxuat');
+        Route::delete('/nhasanxuat/destroy/{id}', 'destroy')->name('destroy.nhasanxuat');
+        Route::get('/nhasanxuat/show/{id}', 'show')->name('show.nhasanxuat');
+    });
 
     Route::controller(App\Http\Controllers\AdminController::class)->group(function () {
         Route::get('/admin', 'admin')->name('admin');
+    });
+    Route::controller(App\Http\Controllers\Admin\HoaDonBanController::class)->group(function () {
+        Route::get('/hdb', 'index')->name('hdb');
     });
 });
 

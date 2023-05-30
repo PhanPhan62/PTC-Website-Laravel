@@ -1,34 +1,32 @@
 @extends('Admin.layoutadmin')
-@section('title', 'Product')
+@section('title', 'Nhân viên')
 @section('content_admin')
 
 @if (Session::has('flash_message'))
     <div class="alert-box success-alert add-alert" style="position: absolute; top:0; right:0;">
         <div class="alert" >
-            <p class="text-medium mb-0" style="width: 100%;">
+            <p class="text-medium mb-0" style="width: 100%; coler:#fff">
                 {{ Session::get('flash_message') }}
             </p>
         </div>
-    </div> 
+    </div>
+    {{-- <script>
+        alert('{{ Session::get('flash_message') }}');
+    </script> --}}
 @endif
-
-{{-- <select name="" id="">
-    @foreach ($Cate as $item)
-        <option value="{{$item->id}}">{{$item->TenLoaiSp}}</option>
-    @endforeach
-</select> --}}
 <!-- ========== table components start ========== -->
 <section class="table-components">
     <div class="container-fluid">
+
         <!-- ========== tables-wrapper start ========== -->
-        <div class="tables-wrapper">  
+        <div class="tables-wrapper pt-10">  
             <div class="col-mr-3"> 
                 <nav aria-label="breadcrumb">
                 
-                    <div class="breadcrumb-wrapper" style="height: 100%">
-                        <ol class="breadcrumb" style="padding: 3px; background-color: #fff; margin-bottom: 0">
+                    <div class="breadcrumb-wrapper">
+                        <ol class="breadcrumb" style="">
                             <li class="breadcrumb-item">
-                                <a href="">Dashboard</a>
+                                <a href="#0">Dashboard</a>
                             </li>
                             <li class="breadcrumb-item"><a href="#0">Forms</a></li>
                             <li class="breadcrumb-item active" aria-current="page">
@@ -36,8 +34,7 @@
                             </li>
                         </ol>
                     </nav>
-                    <a href="{{route('create.product')}}" class="main-btn active-btn-outline rounded-md btn-hover" style="padding: 10px 25px; margin-bottom: 5px;">Add</a>
-                    <a href="{{route('product')}}" class="main-btn active-btn-outline rounded-md btn-hover" style="padding: 10px 25px; margin-bottom: 5px;">Clear Search</a>
+                    <a href="{{ url('/category/create') }}" class="main-btn active-btn-outline rounded-md btn-hover" style="padding: 10px 25px; margin-bottom: 5px;">Add</a>
                     </div>
                 </div>
             <!-- end col -->
@@ -53,34 +50,25 @@
                                             <h6>STT</h6>
                                         </th>
                                         <th>
-                                            <h6>Mã Sản phẩm</h6>
+                                            <h6>Tên nhân viên</h6>
                                         </th>
                                         <th>
-                                            <h6>Mã Loại</h6>
+                                            <h6>Tài Khoản</h6>
                                         </th>
                                         <th>
-                                            <h6>Tên Sản Phẩm</h6>
-                                        </th>
-                                        <th>
-                                            <h6>Mô Tả</h6>
+                                            <h6>Mật khẩu</h6>
                                         </th>
                                         <th>
                                             <h6>Ảnh đại diện</h6>
                                         </th>
                                         <th>
-                                            <h6>Giá</h6>
+                                            <h6>Giới tính</h6>
                                         </th>
                                         <th>
-                                            <h6>Nhà Sản Xuất</h6>
+                                            <h6>Địa chỉ</h6>
                                         </th>
                                         <th>
-                                            <h6>Đơn Vị Tính</h6>
-                                        </th>
-                                        <th>
-                                            <h6>Màu</h6>
-                                        </th>
-                                        <th>
-                                            <h6>Size</h6>
+                                            <h6>Trạng thái</h6>
                                         </th>
                                         <th>
                                             <h6>Hành Động</h6>
@@ -89,7 +77,7 @@
                                     <!-- end table row-->
                                 </thead>
                                 <tbody>
-                                    @foreach ($sanpham as $item)
+                                    @foreach ($user as $item)
                                         <tr>
                                             <td class="min-width">
                                                 <p>{{ $loop->iteration }}</p>
@@ -97,21 +85,14 @@
                                             <td class="min-width">
                                                 <div class="lead">
                                                     <div class="lead-text">
-                                                        <p>{{$item->id}}</p>
+                                                        <p>{{$item->name}}</p>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="min-width">
                                                 <div class="lead">
                                                     <div class="lead-text" >
-                                                        <p>{{$item->MaLoaiSP}}</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="min-width">
-                                                <div class="lead">
-                                                    <div class="lead-text" >
-                                                        <p>{{$item->TenSanPham}}</p>
+                                                        <p>{{$item->email}}</p>
                                                     </div>
                                                 </div>
                                             </td>
@@ -120,15 +101,15 @@
                                                     <div class="lead-text" >
                                                         {{-- <p>{{Str::limit($item->MoTa, $max_length) }}</p> --}}
                                                         <div class="limit-item">
-                                                            @if(strlen($item->MoTaSanPham) > $max_length)
-                                                                <p style="text-transform: capitalize;">{!! Str::limit($item->MoTaSanPham, $max_length) !!}
+                                                            @if(strlen($item->password) > $max_length)
+                                                                <p style="text-transform: capitalize;">{!! Str::limit($item->password, $max_length) !!}
                                                                     <span class="more">
                                                                         <a href="#" class="read-more">Xem thêm</a>
                                                                     </span>
                                                                 </p>
-                                                                <p style="display: none;text-transform: capitalize;">{!! $item->MoTaSanPham !!}</p>
+                                                                <p style="display: none;text-transform: capitalize;">{!! $item->password !!}</p>
                                                             @else
-                                                                <p>{!! $item->MoTaSanPham !!}
+                                                                <p>{!! $item->password !!}
                                                                     
                                                                 </p>
                                                             @endif
@@ -140,60 +121,37 @@
                                                 <div class="lead">
                                                     <div class="lead-text" >
                                                         <p>
-                                                            <img style="height: 100px" src="{{ asset(''.'uploads/'.$item->AnhDaiDien) }}" alt="{{$item->AnhDaiDien}}">
+                                                            <img style="height: 100px" src="{{ asset(''.'uploads/'.$item->image) }}" alt="{{$item->name}}">
                                                         </p>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="min-width">
-                                                <div class="lead">
-                                                    <div class="lead-text" >
-                                                        <p>{{number_format($item->GiaBan)}} VNĐ</p>
-                                                    </div>
-                                                </div>
+                                                <p>{!! $item->gender ? 'Nam <i class="fa-solid fa-mars fa-bounce"></i>' : 'Nữ <i class="fa-solid fa-venus fa-bounce" style="color: #ff0000;"></i> '!!}</a></p>
                                             </td>
                                             <td class="min-width">
                                                 <div class="lead">
                                                     <div class="lead-text" >
-                                                        <p>{{$item->MaNSX}}</p>
+                                                        <p>{{$item->address}}</p>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="min-width">
-                                                <div class="lead">
-                                                    <div class="lead-text" >
-                                                        <p>{{$item->MaDonViTinh}}</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="min-width">
-                                                <div class="lead">
-                                                    <div class="lead-text" >
-                                                        <p>{{$item->MaMau}}</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="min-width">
-                                                <div class="lead">
-                                                    <div class="lead-text" >
-                                                        <p>{{$item->MaSize}}</p>
-                                                    </div>
-                                                </div>
+                                                <p>{!! $item->status ? 'Đang Làm việc <i class="lni lni-checkmark-circle text-success"></i
+                                                    > ' : 'Ngưng Làm việc <i class="lni lni-spinner text-danger"></i> '!!}</a></p>
                                             </td>
                                             <td>
                                                 <div class="action" >
-                                                    {{-- <a style="cursor: pointer" href="{{ url('/Product/show/' . $item->id) }}" class="text-dark mr-10"> --}}
-                                                    <a style="cursor: pointer" href="{{ url('/product/show/' . $item->id) }}" class="text-dark mr-10">
+                                                    <a style="cursor: pointer" href="{{ url('/category/show/' . $item->id) }}" class="text-dark mr-10">
                                                         <i class="lni lni-eye" title="View"></i>
                                                     </a>
-                                                    {{-- <a style="cursor: pointer" href="{{route('edit.product', $item->id)}}" class="text-info  mr-10"> --}}
-                                                    <a style="cursor: pointer" href="{{route('edit.product', $item->id)}}" class="text-info mr-10">
+                                                    <a style="cursor: pointer" href="{{route('edit.category', $item->id)}}" class="text-info  mr-10">
                                                         <i class="lni lni-write" title="Edit"></i>
                                                     </a>
-                                                    <form method="POST" action="{{ route('destroy.product', $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                    <form method="POST" action="{{ route('destroy.category', $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                         {{ method_field('DELETE') }}
                                                         {{ csrf_field() }}
-                                                        <button type="submit" onclick="return confirm('Bạn có thực sự muốn xóa {{ $item->TenSanPham }} hay không?')"><i class="lni lni-trash-can text-danger" > </i></button>
+                                                        <button type="submit" onclick="return confirm('Bạn có thực sự muốn xóa {{ $item->TenLoaiSP }} hay không?')"><i class="lni lni-trash-can text-danger" > </i></button>
                                                     </form>
                                                 </div>
                                             </td>
@@ -219,7 +177,11 @@
     
 </section>
 <div aria-label="Page navigation"  class="d-flex justify-content-center">
-    {!!$sanpham->appends(request()->all())->links()!!}
+    
+    {{-- {!!$loaisp->Links("Admin.Categories.index")!!} --}}
+    {{-- {{ $loaisp->render('Admin.Categories.index')->onEachSide(1)->links() }} --}}
+
+    {{$user->appends(request()->all())->links()}}
 </div>
 
 <!-- ========== table components end ========== -->

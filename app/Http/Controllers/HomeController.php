@@ -149,7 +149,7 @@ class HomeController extends Controller
             $newUser = User::create([
                 // 'date_of_birth' => Carbon::now(),
                 'name' => $request->name,
-                'power' => $request->power,
+                // 'power' => $request->power,
                 'email' => $request->email,
                 'password' => bcrypt($request->password)
             ]);

@@ -130,7 +130,8 @@
                                 <div class="info">
                                     <h6>{{ Auth::User()->name }}</h6>
                                     <div class="image">
-                                        <img src="/assets/images/profile/profile-image.png" alt="" />
+                                        {{-- <img src="/assets/images/profile/profile-image.png" alt="" /> --}}
+                                        <img src="{{ asset(''.'uploads/profile/'. Auth::User()->image) }}" alt="" />
                                         <span class="status"></span>
                                     </div>
                                 </div>
