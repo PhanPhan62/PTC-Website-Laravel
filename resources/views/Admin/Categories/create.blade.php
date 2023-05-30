@@ -48,10 +48,6 @@
                             <label>Tên Loại</label>
                             <input type="text" name="TenLoaiSP" required id="name" placeholder="Tên Loại" />
                         </div>
-                        {{-- <div class="input-style-1">
-                            <label>Tên Loại</label>
-                            <input type="text" name="TrangThai" id="TrangThai" placeholder="Tên Loại" />
-                        </div> --}}
                         <div class="select-style-1">
                             <label>Trạng thái</label>
                             <div class="select-position">

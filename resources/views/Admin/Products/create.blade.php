@@ -69,10 +69,10 @@
                             <input type="file" name="AnhDaiDien" required value=""  id="AnhDaiDien"/>
                         </div>
                         {{-- Chọn nhiều ảnh --}}
-                        {{-- <div class="input-style-1 ">
-                            <label for="AnhDaiDien">Ảnh Đại Diện</label>
-                            <input type="file" name="file[]" accept="image/*" multiple required value=""  id="AnhDaiDien"/>
-                        </div> --}}
+                        <div class="input-style-1 ">
+                            <label for="Anh">Ảnh chi tiết</label>
+                            <input type="file" name="Anhs[]" accept="image/*" multiple required value="" multiple id="Anh"/>
+                        </div>
                         <div class="input-style-1 ">
                             <label for="GiaBan">Giá</label>
                             <input type="text" name="GiaBan" required value="" placeholder="Giá" id="GiaBan"/>

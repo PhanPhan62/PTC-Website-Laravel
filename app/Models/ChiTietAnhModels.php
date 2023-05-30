@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\Models\ProductModels;
 
 class ChiTietAnhModels extends Model
 {
@@ -24,4 +25,8 @@ class ChiTietAnhModels extends Model
             ->get();
         return $imgdetails;
     }
+    // public function SanPhams()
+    // {
+    //     return $this->belongsTo(ProductModels::class, 'MaSanPham')->onDelete('cascade');
+    // }
 }

@@ -9,6 +9,7 @@ use App\Models\SizeModels;
 use App\Models\DonViTinhModels;
 use App\Models\NSXModels;
 use App\Models\LoaiSP;
+use App\Models\ChiTietAnhModels;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -56,25 +57,56 @@ class Admin_ProductController extends Controller
     public function store(Request $request)
     {
         $products = new ProductModels([
-            'MaLoaiSP' => $request->get('MaLoaiSP'),
-            'TenSanPham' => $request->get('TenSanPham'),
-            'MoTaSanPham' => $request->get('MoTaSanPham'),
-            'AnhDaiDien' => $request->get('AnhDaiDien'),
-            'GiaBan' => $request->get('GiaBan'),
-            'MaNSX' => $request->get('MaNSX'),
-            'MaDonViTinh' => $request->get('MaDonViTinh'),
-            'MaMau' => $request->get('MaMau'),
-            'MaSize' => $request->get('MaSize'),
+            // 'MaLoaiSP' => $request->get('MaLoaiSP'),
+            // 'TenSanPham' => $request->get('TenSanPham'),
+            // 'MoTaSanPham' => $request->get('MoTaSanPham'),
+            // 'AnhDaiDien' => $request->get('AnhDaiDien'),
+            // 'GiaBan' => $request->get('GiaBan'),
+            // 'MaNSX' => $request->get('MaNSX'),
+            // 'MaDonViTinh' => $request->get('MaDonViTinh'),
+            // 'MaMau' => $request->get('MaMau'),
+            // 'MaSize' => $request->get('MaSize'),
         ]);
+        // if ($request->hasFile('AnhDaiDien')) {
+        //     $file = $request->file('AnhDaiDien');
+        //     $fileName = time() . '_' . $file->getClientOriginalName();
+        //     $path = $file->move(base_path('public/uploads'), $fileName);
+        //     $products->AnhDaiDien = $fileName;
+        // }
+        // $products->save();
+        // return redirect('product')->with('flash_message', 'Thêm thành công!!!');
         if ($request->hasFile('AnhDaiDien')) {
             $file = $request->file('AnhDaiDien');
-            $fileName = $file->getClientOriginalName();
-            $path = $file->move(base_path('public/uploads'), $fileName);
-            $products->AnhDaiDien = $fileName;
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $path = $file->move(\public_path('uploads/'), $fileName);
+            // $path = $file->move(base_path('public/uploads'), $fileName);
+            $products = new ProductModels([
+                'MaLoaiSP' => $request->MaLoaiSP,
+                'TenSanPham' => $request->TenSanPham,
+                'MoTaSanPham' => $request->MoTaSanPham,
+                'AnhDaiDien' =>  $fileName,
+                // 'Anh' =>,
+                'GiaBan' => $request->GiaBan,
+                'MaNSX' => $request->MaNSX,
+                'MaDonViTinh' => $request->MaDonViTinh,
+                'MaMau' => $request->MaMau,
+                'MaSize' => $request->MaSize,
+            ]);
+            $products->save();
         }
-        $products->save();
+
+        if ($request->hasFile('Anhs')) {
+            $files = $request->file("Anhs");
+            // dd();
+            foreach ($files as $item) {
+                $fileName = time() . '_' . $item->getClientOriginalName();
+                $request['MaSanPham'] = $products->id;
+                $request['Anh'] = $fileName;
+                $path = $item->move(\public_path('/uploads/ChiTiet'), $fileName);
+                ChiTietAnhModels::create($request->all());
+            }
+        }
         return redirect('product')->with('flash_message', 'Thêm thành công!!!');
-        // if($request->has(''))
     }
 
     /**
@@ -82,14 +114,6 @@ class Admin_ProductController extends Controller
      */
     public function show(int $id)
     {
-        // $Cate = LoaiSP::orderBy('TenLoaiSP', 'ASC')->select('id', 'TenLoaiSP')->where('id', '=', '1')->get();
-        // $Mau = MauModels::orderBy('TenMau')->select('id', 'TenMau', 'MoTa')->get();
-        // $Size = SizeModels::orderBy('TenSize')->select('id', 'TenSize', 'MoTa')->get();
-        // $DonViTinh = DonViTinhModels::orderBy('TenDonViTinh')->select('id', 'TenDonViTinh')->get();
-        // $NhaSanXuat = NSXModels::orderBy('TenNSX')->select('id', 'TenNSX', 'SoDienThoai', 'Email')->get();
-        // $sanpham = ProductModels::find($id);
-
-
 
         $sanpham = DB::table('sanpham')
             ->join('loaisp', 'sanpham.MaLoaiSP', '=', 'loaisp.id')
@@ -161,7 +185,18 @@ class Admin_ProductController extends Controller
      */
     public function destroy(int $id)
     {
-        ProductModels::destroy($id);
+        $img = ProductModels::findOrFail($id);
+        if (File::exists('uploads/' . $img->AnhDaiDien)) {
+            File::delete('uploads/' . $img->AnhDaiDien);
+        }
+        $imgs = ChiTietAnhModels::where('MaSanPham', $img->id)->get();
+        foreach ($imgs as $item) {
+            if (File::exists('/uploads/ChiTiet' . $item->Anh)) {
+                File::delete('/uploads/ChiTiet' . $item->Anh);
+            }
+        }
+        $img->delete();
+        // ProductModels::destroy($id);
         return redirect()->route('product')->with('flash_message', 'sanpham deleted!');
     }
 }

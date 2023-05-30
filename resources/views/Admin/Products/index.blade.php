@@ -139,8 +139,8 @@
                                             <td class="min-width">
                                                 <div class="lead">
                                                     <div class="lead-text" >
-                                                        <p>
-                                                            <img style="height: 100px" src="{{ asset(''.'uploads/'.$item->AnhDaiDien) }}" alt="{{$item->AnhDaiDien}}">
+                                                            {{-- <img src="{{ asset('uploads/Pro_AV00011_2.jpg') }}" alt=""> --}}
+                                                            <img style="height: 100px" src="{{ asset('uploads/'.$item->AnhDaiDien) }}" alt="{{$item->AnhDaiDien}}">
                                                         </p>
                                                     </div>
                                                 </div>

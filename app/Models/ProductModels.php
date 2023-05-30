@@ -76,6 +76,7 @@ class ProductModels extends Model
             ->first();
         return $details;
     }
+
     public function LoaiSP()
     {
         return $this->belongsTo(LoaiSP::class, 'TenLoaiSP', 'TrangThai');
@@ -84,8 +85,8 @@ class ProductModels extends Model
     {
         return $this->belongsTo(MauModels::class, 'TenMau', 'MoTa');
     }
-    public function ChiTietAnhModels()
-    {
-        return $this->belongsTo(ChiTietAnhModels::class, 'MaSanPham', 'Anh');
-    }
+    // public function ChiTietAnhModels()
+    // {
+    //     return $this->hasMany(ChiTietAnhModels::class, 'MaSanPham', 'Anh');
+    // }
 }
