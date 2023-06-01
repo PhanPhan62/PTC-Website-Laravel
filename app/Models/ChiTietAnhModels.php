@@ -25,8 +25,8 @@ class ChiTietAnhModels extends Model
             ->get();
         return $imgdetails;
     }
-    // public function SanPhams()
-    // {
-    //     return $this->belongsTo(ProductModels::class, 'MaSanPham')->onDelete('cascade');
-    // }
+    public function sanPham()
+    {
+        return $this->belongsTo(ProductModels::class, 'MaSanPham', 'id');
+    }
 }

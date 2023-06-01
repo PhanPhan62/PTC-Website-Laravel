@@ -52,16 +52,34 @@ class ProductModels extends Model
 
         return $newproduct;
     }
-    public function Sell()
+    // public function Sell()
+    // {
+    //     $sell = DB::table('sanpham')
+    //         ->join('giamgia', 'giamgia.MaSanPham', '=', 'sanpham.id')
+    //         ->where('giamgia.TrangThai', '=', 1)
+    //         ->where('giamgia.ThoiGianBatDau', '<=', now())
+    //         ->where('giamgia.ThoiGianKetThuc', '>=', now())
+    //         ->select('sanpham.*', 'giamgia.PhanTram')
+    //         ->get();
+    //     return $sell;
+    // }
+    public function getSanPhamGiamGia()
     {
-        $sell = DB::table('sanpham')
-            ->join('giamgia', 'giamgia.MaSanPham', '=', 'sanpham.id')
+        $now = Carbon::now();
+        $sanPhamGiamGia = DB::table('giamgia')
+            ->join('sanpham', 'giamgia.MaSanPham', '=', 'sanpham.id')
+            ->select(
+                'sanpham.*',
+                'giamgia.PhanTram',
+                DB::raw('ROUND((sanpham.GiaBan - (sanpham.GiaBan * IFNULL(giamgia.PhanTram, 0) / 100)), -4) as GiaGiam')
+            )
             ->where('giamgia.TrangThai', '=', 1)
-            ->where('giamgia.ThoiGianBatDau', '<=', now())
-            ->where('giamgia.ThoiGianKetThuc', '>=', now())
-            ->select('sanpham.*', 'giamgia.PhanTram')
+            ->where('giamgia.ThoiGianKetThuc', '>=', $now)
+            ->orderBy('giamgia.ThoiGianBatDau', 'asc')
+            ->take(10)
             ->get();
-        return $sell;
+
+        return $sanPhamGiamGia;
     }
     public function Details($id)
     {
@@ -85,8 +103,8 @@ class ProductModels extends Model
     {
         return $this->belongsTo(MauModels::class, 'TenMau', 'MoTa');
     }
-    // public function ChiTietAnhModels()
-    // {
-    //     return $this->hasMany(ChiTietAnhModels::class, 'MaSanPham', 'Anh');
-    // }
+    public function chitietanh()
+    {
+        return $this->hasMany(ChiTietAnhModels::class, 'MaSanPham', 'id');
+    }
 }

@@ -27,12 +27,14 @@ class HomeController extends Controller
 
         $bestSelling = $ProductModels->BestSeller();
         $newproduct = $ProductModels->NewProduct();
-        $sell = $ProductModels->Sell();
+        $dicountProducts  = $ProductModels->getSanPhamGiamGia(10);
+        // $sell = $ProductModels->Sell();
         return view('FrontEnd.index', [
+            'dicountProducts' => $dicountProducts,
             'db' => $db,
             'bestSelling' => $bestSelling,
             'newproduct' => $newproduct,
-            'sell' => $sell,
+            // 'sell' => $sell,
         ]);
     }
     public function layout($id = null, Request $request)

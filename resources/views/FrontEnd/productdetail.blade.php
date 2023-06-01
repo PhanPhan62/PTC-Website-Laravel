@@ -8,8 +8,8 @@
                 Home
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
-            <a href="{{ route('shop', ['id' => $category2->id]) }}" class="stext-109 cl8 hov-cl1 trans-04">
-                {{ $category2->TenLoaiSP }}
+            <a href="" class="stext-109 cl8 hov-cl1 trans-04">
+            
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
 
@@ -31,14 +31,14 @@
                             <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                             <div class="slick3 gallery-lb">
-                                @foreach ($chitietanh as $item)
+                                @foreach ($chitietanh as $item1)
                                     <div class="item-slick3 "
-                                        data-thumb="{{ asset('/uploads/ChiTiet') }}/{{ $item->Anh }}">
+                                        data-thumb="/uploads/ChiTiet/{{ $item1->Anh }}">
                                         <div class="wrap-pic-w pos-relative">
-                                            <img src="{{ asset('/uploads') }}/{{ $item->AnhDaiDien }}"
-                                                alt="{{ $item->TenSanPham }}">
+                                            <img src="/uploads/{{ $item1->AnhDaiDien }}"
+                                                alt="{{ $item1->TenSanPham }}">
                                             <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                                href="{{ asset('/uploads') }}/{{ $item->AnhDaiDien }}">
+                                                href="/uploads/{{ $item1->AnhDaiDien }}">
                                                 <i class="fa fa-expand"></i>
                                             </a>
                                         </div>
@@ -120,7 +120,7 @@
                                         </div>
                                     </div>
 
-                                    <a href="{{ route('addCart', ['id' => $item->id]) }}"
+                                    <a href="{{route('addCart',['id'=>$product->id])}}"
                                         class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                         Add to cart
                                     </a>
@@ -367,7 +367,7 @@
                             <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-pic hov-img0">
-                                    <img src="{{ asset('/images') }}/product-01.jpg" alt="IMG-PRODUCT">
+                                    <img src="/uploads/{{ $item->AnhDaiDien }}" alt="IMG-PRODUCT">
 
                                     <a href="#"
                                         class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">

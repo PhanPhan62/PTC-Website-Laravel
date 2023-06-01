@@ -39,19 +39,23 @@
 
                         <div class="input-style-1 ">
                             <label for="AnhDaiDien">Ảnh Đại Diện</label>
-                            <img src="uploads/Sneaker_02.jpg" alt=""><img style="height: 100px" src="{{ asset(''.'uploads/'.$sanpham->AnhDaiDien) }}" alt="{{$sanpham->TenSanPham}}">
+                            
+                            <img style="height: 100px" src="{{ asset(''.'uploads/'.$sanpham->AnhDaiDien) }}" alt="{{$sanpham->TenSanPham}}">
 
                             <?php $fileInput = request()->file('AnhDaiDien'); ?>
-                            @if(!$fileInput)
+                            
                                 <input required type="file" name="AnhDaiDien"  
                                         id="AnhDaiDien" value="{{ $sanpham->AnhDaiDien }}"/>
-                            @else
-                                <input required type="text" name="AnhDaiDien"  value="{{ $sanpham->AnhDaiDien }}" placeholder="{{ $sanpham->AnhDaiDien }}"
-                                id="AnhDaiDien" />
-                            @endif
+                        </div>
+                        {{-- <div class="input-style-1 ">
+                            <label for="Chitietanh">Chi tiết ảnh</label>
+                            @foreach ($imgs as $item)
+                                
+                                <img id="Chitietanh" style="height: 100px" src="{{ asset(''.'/uploads/ChiTiet'.$item->Anh) }}" alt="{{$sanpham->TenSanPham}}">
+                            @endforeach
 
                             
-                        </div>
+                        </div> --}}
                         <div class="input-style-1 ">
                             <label for="GiaBan">Giá</label>
                             <input type="text" name="GiaBan" required value="{{ $sanpham->GiaBan }}" placeholder="Giá"
@@ -102,6 +106,7 @@
                                 </select>
                             </div>
                         </div>
+                       
                         <input type="submit" value="Update" class=" main-btn success-btn-outline rounded-full btn-hover ">
                         <a href="/product" class=" main-btn danger-btn-outline rounded-full btn-hover ">Back</a>
                 </form>

@@ -56,25 +56,7 @@ class Admin_ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $products = new ProductModels([
-            // 'MaLoaiSP' => $request->get('MaLoaiSP'),
-            // 'TenSanPham' => $request->get('TenSanPham'),
-            // 'MoTaSanPham' => $request->get('MoTaSanPham'),
-            // 'AnhDaiDien' => $request->get('AnhDaiDien'),
-            // 'GiaBan' => $request->get('GiaBan'),
-            // 'MaNSX' => $request->get('MaNSX'),
-            // 'MaDonViTinh' => $request->get('MaDonViTinh'),
-            // 'MaMau' => $request->get('MaMau'),
-            // 'MaSize' => $request->get('MaSize'),
-        ]);
-        // if ($request->hasFile('AnhDaiDien')) {
-        //     $file = $request->file('AnhDaiDien');
-        //     $fileName = time() . '_' . $file->getClientOriginalName();
-        //     $path = $file->move(base_path('public/uploads'), $fileName);
-        //     $products->AnhDaiDien = $fileName;
-        // }
-        // $products->save();
-        // return redirect('product')->with('flash_message', 'Thêm thành công!!!');
+
         if ($request->hasFile('AnhDaiDien')) {
             $file = $request->file('AnhDaiDien');
             $fileName = time() . '_' . $file->getClientOriginalName();
@@ -112,9 +94,10 @@ class Admin_ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(int $id)
+    public function show(int $id = null)
     {
-
+        // $cta = ChiTietAnhModels::where('MaSanPham', $id);
+        // dd($cta);
         $sanpham = DB::table('sanpham')
             ->join('loaisp', 'sanpham.MaLoaiSP', '=', 'loaisp.id')
             ->join('nhasanxuat', 'sanpham.MaNSX', '=', 'nhasanxuat.id')
@@ -126,13 +109,13 @@ class Admin_ProductController extends Controller
             ->first();
         return view(
             'Admin.Products.show',
-
             [
                 // 'Cate' => $Cate,
                 // 'Mau' => $Mau,
                 // 'Size' => $Size,
                 // 'DonViTinh' => $DonViTinh,
                 // 'NhaSanXuat' => $NhaSanXuat,
+                // 'cta' => $cta,
                 'sanpham' => $sanpham
             ]
         );
@@ -196,7 +179,7 @@ class Admin_ProductController extends Controller
             }
         }
         $img->delete();
-        // ProductModels::destroy($id);
+        ProductModels::destroy($id);
         return redirect()->route('product')->with('flash_message', 'sanpham deleted!');
     }
 }

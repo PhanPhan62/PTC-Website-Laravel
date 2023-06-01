@@ -40,20 +40,7 @@
 
                         </div> --}}
                         {{-- </div> --}}
-                        <div class="form-group" style="margin-bottom: 0; ">
-                            {{-- <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label> --}}
-                            <select name="power" id="" style="border: none; cursor: pointer;">
-                                @foreach ($powers as $item)
-                                        @if ($item->power == 0)
-                                            <option value="{{ $item->id }}">Admin <i class="fa-solid fa-chevron-down fa-bounce"></i></option>
-                                        @elseif ($item->power == 1)
-                                            <option value="{{ $item->id }}" selected>Nhân Viên <i class="fa-solid fa-chevron-down fa-bounce"></i></option>
-                                        @else
-                                            <option value="{{ $item->id }}">Khách Hàng <i class="fa-solid fa-chevron-down fa-bounce"></i></option>
-                                        @endif
-                                    @endforeach
-                            </select>
-                        </div>
+                       
                         <div class="form-group">
                             <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                             <input type="email" required name="email" id="your_name" placeholder="Email@example.com" />

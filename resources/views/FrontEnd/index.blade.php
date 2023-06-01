@@ -180,16 +180,16 @@
                 </li>
 
                 <li class="nav-item p-b-10">
-                    <a class="nav-link" data-toggle="tab" href="#featured" role="tab">Featured</a>
+                    <a class="nav-link" data-toggle="tab" href="#featured" role="tab">New</a>
                 </li>
 
                 <li class="nav-item p-b-10">
                     <a class="nav-link" data-toggle="tab" href="#sale" role="tab">Sale</a>
                 </li>
 
-                <li class="nav-item p-b-10">
+                {{-- <li class="nav-item p-b-10">
                     <a class="nav-link" data-toggle="tab" href="#top-rate" role="tab">Top Rate</a>
-                </li>
+                </li> --}}
             </ul>
 
             <!-- Tab panes -->
@@ -242,8 +242,6 @@
                     <div class="wrap-slick2">
                         <div class="slick2">
                             @foreach ($newproduct as $item)
-                                
-                            
                             <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
                                 <!-- Block2 -->
                                 <div class="block2">
@@ -285,7 +283,7 @@
                     <!-- Slide2 -->
                     <div class="wrap-slick2">
                         <div class="slick2">
-                            @foreach ($sell as $item1)
+                            @foreach ($dicountProducts as $item1)
                                 
                             
                             <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
